@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <body>
+            <div class="calculator">
+            <input type="text" id="result" disabled >
+                <div class="content">
+                <button onclick="clearDisplay()" class="C" ><b>AC</b></button>
+                <button onclick="deleteLast()" class="A"style="background-color: #ffcc00;"><b>DEL</b></button>
+                <button onclick="appendToDisplay('/')" class="CL"><b>/</b></button>
+                <button onclick="appendToDisplay('7')" class="A"><b>7</b></button>
+                <button onclick="appendToDisplay('8')" class="A"><b>8</b></button>
+                <button onclick="appendToDisplay('9')" class="A"><b>9</b></button>
+                <button onclick="appendToDisplay('*')" class="CL"><b>*</b></button>
+                <button onclick="appendToDisplay('4')" class="A"><b>4</b></button>
+                <button onclick="appendToDisplay('5')" class="A"><b>5</b></button>
+                <button onclick="appendToDisplay('6')" class="A"><b>6</b></button>
+                <button onclick="appendToDisplay('-')" class="CL"><b>-</b></button>
+                <button onclick="appendToDisplay('1')" class="A"><b>1</b></button>
+                <button onclick="appendToDisplay('2')" class="A"><b>2</b></button>
+                <button onclick="appendToDisplay('3')" class="A"><b>3</b></button>
+                <button onclick="appendToDisplay('+')" class="CL"><b>+</b></button>
+                <button onclick="appendToDisplay('0')" class="A"><b>0</b></button>
+                <button onclick="appendToDisplay('.')" class="A"><b>.</b></button>
+                <button onclick="calculateResult()" class="r"><b>RESULT</b></button>
+                </div>
+            </div>  
+            <style>
+                body{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height:100vh;
+                    background-color: #f0e7d5;
+                }
+                .content{
+                    display: grid;
+                    grid-template-columns: repeat(4,1fr);
+                    gap: 5px;
+                }
+                #result
+                {
+                    width: 95%;
+                    height: 65px;
+                    font-family: sans-serif;
+                    font-size: 32px;
+                    color: #111318;
+                    background-color: #e5e5e5;
+                    margin-bottom:8px;
+                    align-items: center;
+                    padding: 5px;
+                    text-align: right;
+                    border-radius: 10px;
+                    
+                }
+                .calculator{
+                    width:300px;
+                    height: 360px;
+                    background-color: #111318;
+                    padding: 20px;
+                    margin:20px auto;
+                    border-radius: 10px ;
+                    max-width: 400px;  
+                    border:2px solid #000000;  
+                }
+                button 
+                {
+                    height: 50px;
+                    font-size: 14px;
+                    border: none;
+                    border-radius: 5px ;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+                .r{
+                    grid-column: span 2;
+                    background-color: #ffcc00;
+                    font-size: 22px;
+                    font-family: sans-serif;
+                
+                }
+                .C{
+                    grid-column: span 2;
+                    background-color: #ffcc00;
+                    font-size: 22px;
+                    font-family:sans-serif
+                    
+                }
+                .CL{
+                    background-color: #ff881a;
+                    color: white;
+                    font-size: 22px;
+                    font-family:sans-serif
+                }
+                .A{
+                    font-size: 22px;
+                    font-family:sans-serif
+                }
+                button:hover { 
+                    transform: scale(0.95); 
+               }
+                
+            </style>
+        </body>
+        <script>
+            function appendToDisplay(value) {
+                document.getElementById('result').value += value;
+            }
+            function clearDisplay() {
+                document.getElementById('result').value = '';
+            }
+            function deleteLast() {
+                var currentValue = document.getElementById('result').value;
+                document.getElementById('result').value = currentValue.slice(0, -1);
+            }
+            function calculateResult() {
+                var expression = document.getElementById('result').value;
+                try {
+                    var result = eval(expression);
+                    document.getElementById('result').value = result;
+                } catch (error) {
+                    document.getElementById('result').value = 'Error';
+                }
+            }
+        </script>
+
+    </head>
+</html>
